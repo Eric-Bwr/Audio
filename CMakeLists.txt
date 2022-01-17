@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.16)
+project(Audio)
+
+set(CMAKE_CXX_STANDARD 20)
+
+file(GLOB_RECURSE SOURCE_FILES "${PROJECT_NAME}/*.cpp" "${PROJECT_NAME}/*.h")
+
+set(dir ${CMAKE_CURRENT_SOURCE_DIR})
+
+include_directories(${PROJECT_NAME})
+
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+#add_library(${PROJECT_NAME} ${SOURCE_FILES})
+

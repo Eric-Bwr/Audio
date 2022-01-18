@@ -9,5 +9,5 @@ set(dir ${CMAKE_CURRENT_SOURCE_DIR})
 
 include_directories(${PROJECT_NAME})
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} main.cpp)
+add_library(${PROJECT_NAME} ${SOURCE_FILES})
 

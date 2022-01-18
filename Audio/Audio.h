@@ -10,8 +10,7 @@ struct Sound {
 class Audio {
 public:
     Audio();
-    int initEngine(const ma_engine_config* pConfig = nullptr);
-    void stopEngine();
+    int init(const ma_engine_config* pConfig = nullptr);
     int load(Sound* sound, const char* file, ma_uint32 flags = 0, ma_sound_group* pGroup = nullptr, ma_fence* pDoneFence = nullptr);
     int load(Sound& sound, const char* file, ma_uint32 flags = 0, ma_sound_group* pGroup = nullptr, ma_fence* pDoneFence = nullptr);
     int play(Sound* sound);
@@ -20,6 +19,7 @@ public:
     int stop(Sound& sound);
     float getLength(Sound* sound);
     float getLength(Sound& sound);
+    ~Audio();
 private:
     ma_engine* engine;
 };

@@ -10,12 +10,8 @@ Audio::Audio() {
     engine = new ma_engine;
 }
 
-int Audio::initEngine(const ma_engine_config* pConfig) {
+int Audio::init(const ma_engine_config* pConfig) {
     return ma_engine_init(pConfig, engine);
-}
-
-void Audio::stopEngine() {
-    ma_engine_uninit(engine);
 }
 
 int Audio::load(Sound* sound, const char *file, ma_uint32 flags, ma_sound_group* pGroup, ma_fence* pDoneFence) {
@@ -52,4 +48,8 @@ float Audio::getLength(Sound* sound) {
 
 float Audio::getLength(Sound& sound){
     return getLength(&sound);
+}
+
+Audio::~Audio(){
+    ma_engine_uninit(engine);
 }

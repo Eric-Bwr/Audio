@@ -50,6 +50,14 @@ void Sound::setLooping(bool looping) {
     ma_sound_set_looping(&sound, looping);
 }
 
+void Sound::setFadeFrames(float volumeStart, float volumeEnd, unsigned long long int fadeLength) {
+    ma_sound_set_fade_in_pcm_frames(&sound, volumeStart, volumeEnd, fadeLength);
+}
+
+void Sound::setFadeMillis(float volumeStart, float volumeEnd, unsigned long long int fadeLength) {
+    ma_sound_set_fade_in_milliseconds(&sound, volumeStart, volumeEnd, fadeLength);
+}
+
 Sound::~Sound() {
     ma_sound_uninit(&sound);
 }
@@ -60,6 +68,34 @@ Audio::Audio() {
 
 int Audio::init(const ma_engine_config* pConfig) {
     return ma_engine_init(pConfig, engine);
+}
+
+void Audio::setPosition(float x, float y, float z) {
+    ma_engine_listener_set_position(engine, 0, x, y, z);
+}
+
+void Audio::setDirection(float x, float y, float z) {
+    ma_engine_listener_set_direction(engine, 0, x, y, z);
+}
+
+void Audio::setVelocity(float x, float y, float z) {
+    ma_engine_listener_set_velocity(engine, 0, x, y, z);
+}
+
+void Audio::setWorldUp(float x, float y, float z) {
+    ma_engine_listener_set_world_up(engine, 0, x, y, z);
+}
+
+void Audio::setVolume(float volume) {
+    ma_engine_set_volume(engine, volume);
+}
+
+void Audio::setGain(float gainDb) {
+    ma_engine_set_gain_db(engine, gainDb);
+}
+
+void Audio::setTime(unsigned long long int time) {
+    ma_engine_set_time(engine, time);
 }
 
 int Audio::load(Sound* sound, const char *file, ma_uint32 flags, ma_sound_group* pGroup, ma_fence* pDoneFence) {

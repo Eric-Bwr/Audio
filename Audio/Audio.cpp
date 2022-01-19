@@ -2,8 +2,56 @@
 #include "MiniAudio.h"
 #include "Audio.h"
 
+void Sound::setPosition(float x, float y, float z){
+    ma_sound_set_position(&sound, x, y, z);
+}
+
+void Sound::setDirection(float x, float y, float z){
+    ma_sound_set_direction(&sound, x, y, z);
+}
+
+void Sound::setVelocity(float x, float y, float z){
+    ma_sound_set_velocity(&sound, x, y, z);
+}
+
+void Sound::setDirectionalAttenuationFactor(float attenuationFactor){
+    ma_sound_set_directional_attenuation_factor(&sound, attenuationFactor);
+}
+
+void Sound::setDopplerFactor(float dopperFactor){
+    ma_sound_set_doppler_factor(&sound, dopperFactor);
+}
+
+void Sound::setMinDistance(float minDistance){
+    ma_sound_set_min_distance(&sound, minDistance);
+}
+
+void Sound::setMaxDistance(float maxDistance){
+    ma_sound_set_max_distance(&sound, maxDistance);
+}
+
+void Sound::setMinGain(float minGain){
+    ma_sound_set_min_gain(&sound, minGain);
+}
+
+void Sound::setMaxGain(float maxGain){
+    ma_sound_set_max_gain(&sound, maxGain);
+}
+
+void Sound::setPitch(float pitch){
+    ma_sound_group_set_pitch(&sound, pitch);
+}
+
+void Sound::setVolume(float volume){
+    ma_sound_set_volume(&sound, volume);
+}
+
 void Sound::setLooping(bool looping) {
     ma_sound_set_looping(&sound, looping);
+}
+
+Sound::~Sound() {
+    ma_sound_uninit(&sound);
 }
 
 Audio::Audio() {

@@ -3,8 +3,20 @@
 #include "MiniAudio.h"
 
 struct Sound {
-    ma_sound sound;
+    void setPosition(float x, float y, float z);
+    void setDirection(float x, float y, float z);
+    void setVelocity(float x, float y, float z);
+    void setDirectionalAttenuationFactor(float attenuationFactor);
+    void setDopplerFactor(float setDopplerFactor);
+    void setMinDistance(float minDistance);
+    void setMaxDistance(float maxDistance);
+    void setMinGain(float minGain);
+    void setMaxGain(float maxGain);
+    void setPitch(float pitch);
+    void setVolume(float volume);
     void setLooping(bool looping = true);
+    ~Sound();
+    ma_sound sound;
 };
 
 class Audio {

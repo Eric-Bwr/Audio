@@ -2,6 +2,14 @@
 #include "MiniAudio.h"
 #include "Audio.h"
 
+int Sound::play(){
+    return ma_sound_start(&sound);
+}
+
+int Sound::stop(){
+    return ma_sound_stop(&sound);
+}
+
 void Sound::setPosition(float x, float y, float z){
     ma_sound_set_position(&sound, x, y, z);
 }
@@ -99,6 +107,7 @@ void Audio::setTime(unsigned long long int time) {
 }
 
 int Audio::load(Sound* sound, const char *file, ma_uint32 flags, ma_sound_group* pGroup, ma_fence* pDoneFence) {
+    sound->engine = engine;
     return ma_sound_init_from_file(engine, file, flags, pGroup, pDoneFence, &sound->sound);
 }
 

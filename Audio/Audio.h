@@ -3,6 +3,8 @@
 #include "MiniAudio.h"
 
 struct Sound {
+    int play();
+    int stop();
     void setPosition(float x, float y, float z);
     void setDirection(float x, float y, float z);
     void setVelocity(float x, float y, float z);
@@ -19,6 +21,7 @@ struct Sound {
     void setFadeMillis(float volumeStart, float volumeEnd, unsigned long long int fadeLength);
     ~Sound();
     ma_sound sound;
+    ma_engine* engine;
 };
 
 class Audio {

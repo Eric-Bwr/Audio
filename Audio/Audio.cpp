@@ -66,6 +66,10 @@ void Sound::setFadeMillis(float volumeStart, float volumeEnd, unsigned long long
     ma_sound_set_fade_in_milliseconds(&sound, volumeStart, volumeEnd, fadeLength);
 }
 
+void Sound::seek(ma_uint64 frame){
+    ma_sound_seek_to_pcm_frame(&sound, frame);
+}
+
 Sound::~Sound() {
     ma_sound_uninit(&sound);
 }

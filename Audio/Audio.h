@@ -19,6 +19,7 @@ struct Sound {
     void setLooping(bool looping = true);
     void setFadeFrames(float volumeStart, float volumeEnd, unsigned long long int fadeLength);
     void setFadeMillis(float volumeStart, float volumeEnd, unsigned long long int fadeLength);
+    void seek(ma_uint64 frame = 0);
     ~Sound();
     ma_sound sound;
     ma_engine* engine;
